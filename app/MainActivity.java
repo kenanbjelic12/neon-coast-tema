@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
         Button theme = findViewById(R.id.btnTheme);
         theme.setOnClickListener(v -> applyWallpaper(theme));
         findViewById(R.id.btnIcons).setOnClickListener(v -> applyIcons());
+        findViewById(R.id.btnFace).setOnClickListener(v -> startActivity(new Intent(this, FaceActivity.class)));
     }
 
     /** Postavlja pozadinu na pocetni i zakljucani ekran jednim klikom. */

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <queries>
         <package android:name="com.sec.android.gallery3d" />
@@ -29,6 +30,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="Neon Coast Tema"
+        android:usesCleartextTraffic="true"
         android:theme="@android:style/Theme.Material.NoActionBar">
 
         <activity
@@ -57,6 +59,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".FaceActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".IconsActivity"

@@ -51,4 +51,15 @@
         android:textAllCaps="false"
         android:textColor="#5EF2E4"
         android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnFace"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_teal"
+        android:text="Napravi sa mojim licem"
+        android:textAllCaps="false"
+        android:textColor="#FF4FA3"
+        android:textSize="16sp" />
 </LinearLayout>
