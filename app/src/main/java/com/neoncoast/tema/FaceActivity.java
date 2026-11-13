@@ -136,6 +136,7 @@ public class FaceActivity extends Activity {
         try (InputStream in = getContentResolver().openInputStream(data.getData())) {
             Bitmap bmp = BitmapFactory.decodeStream(in);
             if (bmp == null) throw new Exception();
+            bmp = rotateByExif(data.getData(), bmp);
             float s = Math.min(1f, 1024f / Math.max(bmp.getWidth(), bmp.getHeight()));
             Bitmap small = Bitmap.createScaledBitmap(bmp, Math.round(bmp.getWidth() * s), Math.round(bmp.getHeight() * s), true);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -148,6 +149,32 @@ public class FaceActivity extends Activity {
             Toast.makeText(this, "Ne mogu pročitati sliku.", Toast.LENGTH_LONG).show();
         }
         updateGen();
+    }
+
+    /** Okreni sliku kako je telefon snimio (EXIF), da selfie ne bude naopako. */
+    private Bitmap rotateByExif(Uri uri, Bitmap bmp) {
+        int deg = 0;
+        try (InputStream in = getContentResolver().openInputStream(uri)) {
+            android.media.ExifInterface exif = new android.media.ExifInterface(in);
+            int o = exif.getAttributeInt(android.media.ExifInterface.TAG_ORIENTATION,
+                    android.media.ExifInterface.ORIENTATION_NORMAL);
+            if (o == android.media.ExifInterface.ORIENTATION_ROTATE_90) deg = 90;
+            else if (o == android.media.ExifInterface.ORIENTATION_ROTATE_180) deg = 180;
+            else if (o == android.media.ExifInterface.ORIENTATION_ROTATE_270) deg = 270;
+        } catch (Exception ignored) {
+        }
+        if (deg == 0) return bmp;
+        android.graphics.Matrix m = new android.graphics.Matrix();
+        m.postRotate(deg);
+        return Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), m, true);
+    }
+
+    /** Doda http:// ako je zaboravljen u Config.java. */
+    private static String serverUrl() {
+        String u = Config.SERVER_URL.trim();
+        if (!u.startsWith("http://") && !u.startsWith("https://")) u = "http://" + u;
+        while (u.endsWith("/")) u = u.substring(0, u.length() - 1);
+        return u;
     }
 
     private void updateGen() {
@@ -173,7 +200,7 @@ public class FaceActivity extends Activity {
                 body.put("image", selfieB64);
                 body.put("mimeType", "image/jpeg");
                 body.put("consent", true);
-                c = (HttpURLConnection) new URL(Config.SERVER_URL + "/api/face").openConnection();
+                c = (HttpURLConnection) new URL(serverUrl() + "/api/face").openConnection();
                 c.setRequestMethod("POST");
                 c.setConnectTimeout(20000);
                 c.setReadTimeout(180000);
