@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#12051F"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="NEON COAST"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.15"
+        android:shadowColor="#FF4FA3"
+        android:shadowRadius="18" />
+
+    <ImageView
+        android:id="@+id/preview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="Pregled teme"
+        android:scaleType="fitCenter"
+        android:src="@drawable/preview" />
+
+    <Button
+        android:id="@+id/btnTheme"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/btn_pink"
+        android:text="Postavi temu"
+        android:textAllCaps="false"
+        android:textColor="#12051F"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnIcons"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_teal"
+        android:text="Neonske ikonice"
+        android:textAllCaps="false"
+        android:textColor="#5EF2E4"
+        android:textSize="16sp" />
+</LinearLayout>

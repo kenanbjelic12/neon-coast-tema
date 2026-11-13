@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+
+    <queries>
+        <package android:name="com.sec.android.gallery3d" />
+        <package android:name="com.google.android.apps.photos" />
+        <package android:name="com.google.android.apps.youtube.music" />
+        <package android:name="com.spotify.music" />
+        <package android:name="com.sec.android.app.music" />
+        <package android:name="com.sec.android.app.popupcalculator" />
+        <package android:name="com.google.android.calculator" />
+        <package android:name="com.sec.android.app.myfiles" />
+        <package android:name="com.google.android.apps.nbu.files" />
+        <package android:name="com.google.android.documentsui" />
+        <package android:name="com.sec.android.daemonapp" />
+        <package android:name="com.google.android.apps.weather" />
+        <package android:name="com.google.android.gm" />
+        <package android:name="com.samsung.android.email.provider" />
+        <package android:name="com.samsung.android.calendar" />
+        <package android:name="com.google.android.calendar" />
+        <package android:name="com.samsung.android.themedesigner" />
+        <package android:name="com.samsung.android.goodlock" />
+        <package android:name="com.teslacoilsw.launcher" />
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="Neon Coast Tema"
+        android:theme="@android:style/Theme.Material.NoActionBar">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- da je launcheri (Nova i drugi) prepoznaju kao paket ikonica -->
+            <intent-filter>
+                <action android:name="com.novalauncher.THEME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.adw.launcher.THEMES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.gau.go.launcherex.theme" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.teslacoilsw.launcher.THEME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".IconsActivity"
+            android:exported="false"
+            android:label="Neonske ikonice"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".LaunchActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    </application>
+</manifest>
