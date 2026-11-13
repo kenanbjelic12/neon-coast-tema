@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <version>1</version>
+    <category title="Neon Coast" />
+    <item drawable="neon_telefon" />
+    <item drawable="neon_poruke" />
+    <item drawable="neon_kamera" />
+    <item drawable="neon_galerija" />
+    <item drawable="neon_mape" />
+    <item drawable="neon_postavke" />
+    <item drawable="neon_kalendar" />
+    <item drawable="neon_muzika" />
+    <item drawable="neon_pretrazivac" />
+    <item drawable="neon_kontakti" />
+    <item drawable="neon_sat" />
+    <item drawable="neon_email" />
+    <item drawable="neon_kalkulator" />
+    <item drawable="neon_prodavnica" />
+    <item drawable="neon_vrijeme" />
+    <item drawable="neon_fajlovi" />
+</resources>
